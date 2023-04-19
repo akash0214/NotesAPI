@@ -7,7 +7,10 @@ const app = express();
 app.use(express.json());
 app.use('/users', userRouter);
 app.use('/notes', noteRouter);
-
+app.use((req, res, next) => {
+    console.log("HTTP method : " + req.method + " ; URL : " + req.url);
+    next();
+});
 app.get('/', (req, res) => {
     res.send("Akash Singh");
 })
