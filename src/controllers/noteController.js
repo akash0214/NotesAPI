@@ -16,7 +16,7 @@ const createNote = async(req, res) => {
 }
 const getNotes = async(req, res) => {
     try {
-        const notes = await noteModel.find(userId : req.userId);
+        const notes = await noteModel.find(userId , req.userId);
         res.status(200).json(notes);
     } catch (error) {
         console.log(error);
@@ -28,8 +28,8 @@ const updateNote = async(req, res) => {
     const {title, description} = req.body;
     const newNote = {
         title: title,
-        description = description,
-        userId = req.userId,
+        description: description,
+        userId: req.userId,
     }
     try {
         await noteModel.findByIdAndUpdate(id, newNote, {new: true});
